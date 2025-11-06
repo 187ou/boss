@@ -1,0 +1,52 @@
+.section-wrapper {
+  @apply w-full max-w-6xl mx-auto py-10 px-4 sm:px-6;
+}
+
+.section-card {
+  @apply bg-white shadow-lg rounded-2xl p-8 border border-gray-100 transition-all duration-300 hover:shadow-2xl;
+}
+
+.section-title {
+  @apply text-center text-4xl font-extrabold text-gray-800 mb-10 tracking-tight;
+}
+
+/* Tabs 样式 */
+.section-tabs {
+  & :global(.ant-tabs-nav) {
+    margin-bottom: 2rem;
+  }
+
+  & :global(.ant-tabs-tab) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  & :global(.ant-tabs-tab-btn) {
+    font-size: 1.125rem;
+    font-weight: 500;
+  }
+
+  & :global(.ant-tabs-tab-active .ant-tabs-tab-btn) {
+    color: #4f46e5; // indigo-600
+  }
+
+  & :global(.ant-tabs-ink-bar) {
+    background-color: #6366f1; // indigo-500
+  }
+}
+
+/* 动画效果 */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.45s ease-out;
+}

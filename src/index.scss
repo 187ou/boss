@@ -1,0 +1,109 @@
+// 导入 Tailwind 指令
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// 定义 SCSS 变量
+$primary-color: rgba(62, 146, 204, 0.6);
+$shine-gradient: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+);
+
+// 自定义工具类
+@layer utilities {
+  .content-auto {
+    content-visibility: auto;
+  }
+
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .transition-transform-opacity {
+    transition-property: transform, opacity;
+  }
+
+  .scrollbar-hide {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .gradient-mask-b {
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  }
+}
+
+// 基础动画定义
+.fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 粒子动画容器
+#particle-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: $primary-color;
+  pointer-events: none;
+}
+
+// 进度条动画
+@keyframes progressFill {
+  from { width: 0; }
+  to { width: var(--progress-width); }
+}
+
+.progress-animate {
+  --progress-width: 100%;
+  animation: progressFill 1.2s ease-out forwards;
+}
+
+// 光效按钮动画
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: $shine-gradient;
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+  }
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}
+
+// 平滑滚动
+html {
+  scroll-behavior: smooth;
+}
